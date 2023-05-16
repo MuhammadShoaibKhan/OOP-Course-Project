@@ -1,0 +1,19 @@
+ string constring = "datasource=localhost;port=3306;username=root;password=hobby";
+            string Query = "INSERT into database1.exp (Serial,Student_Name,Student_Surname,Age,class) values('"+this.Serial_txt.Text+"','"+this.StudentName_txt.Text+"','" +this.StudentSurname_txt.Text+"','"+this.Age_txt.Text+"','"+this.Class_txt.Text+"');";
+            MySqlConnection conDataBase = new MySqlConnection(constring);
+            MySqlCommand cmdDataBase = new MySqlCommand(Query, conDataBase);
+            MySqlDataReader myReader;
+            try
+            {
+                conDataBase.Open();
+                myReader=cmdDataBase.ExecuteReader();
+                MessageBox.Show("Saved");
+                while (myReader.Read())
+                {
+
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
